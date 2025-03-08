@@ -277,23 +277,23 @@ class ParkingLot with LoggerMixin {
       log('Ticket issued: ${ticket.id} for vehicle ${vehicle.plateNumber}' as dynamic);
     } else {
       print('Failed to park vehicle ${vehicle.plateNumber}');
-      log('Parking failed for vehicle ${vehicle.plateNumber}');
+      log('Parking failed for vehicle ${vehicle.plateNumber}' as dynamic);
     }
     
     return ticket;
   }
 
   Future<ParkingTicket?> retrieveVehicle(String plateNumber) async {
-    log('Vehicle exit process initiated');
+    log('Vehicle exit process initiated' as dynamic);
     
     final ticket = await _manager.retrieveVehicle(plateNumber);
     
     if (ticket != null && ticket.fee != null) {
       print('Vehicle $plateNumber exited. Fee: \$${ticket.fee!.toStringAsFixed(2)}');
-      log('Receipt generated for ticket ${ticket.id}, vehicle $plateNumber');
+      log('Receipt generated for ticket ${ticket.id}, vehicle $plateNumber' as dynamic);
     } else {
       print('Failed to retrieve vehicle $plateNumber');
-      log('Failed to retrieve vehicle $plateNumber');
+      log('Failed to retrieve vehicle $plateNumber' as dynamic);
     }
     
     return ticket;
@@ -304,7 +304,7 @@ class ParkingLot with LoggerMixin {
     final total = _manager.getTotalSlots();
     
     print('Parking status checked: $available/$total slots available');
-    log('Availability check requested');
+    log('Availability check requested' as dynamic);
     
     print('\n=== PARKING LOT STATUS ===');
     final status = _manager.getParkingStatus();
